@@ -1,0 +1,67 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <meta name="author" content="Sam G" />
+  <title>Contacts</title>
+  <link rel="stylesheet" href="style.css">
+</head>
+<body>
+  <main class="container">
+    <h1>Contacts Database</h1>
+
+    <table id="contactsTable">
+      <thead>
+        <tr>
+          <th>Slot #</th>
+          <th>Name</th>
+        </tr>
+      </thead>
+      <tbody>
+        <tr><td>0</td><td>Arnold</td></tr>
+        <tr><td>1</td><td>Sly</td></tr>
+        <tr><td>2</td><td>Dwayne</td></tr>
+        <tr><td>3</td><td>Vin</td></tr>
+        <tr><td>4</td><td>JCVD</td></tr>
+        <tr><td>5</td><td>Steven</td></tr>
+      </tbody>
+    </table>
+
+    <button id="findContactBtn">Find Contact</button>
+
+    <p id="status"></p>
+  </main>
+
+  <script> 
+    // Array of contacts
+let contacts = ["Arnold", "Sly", "Dwayne", "Vin", "JCVD", "Steven"];
+
+// Button trigger
+document.getElementById("findContactBtn").onclick = function() {
+  let keepGoing = true;
+
+  while (keepGoing) {
+    let slot = prompt("Enter a slot number (0–5):");
+
+    if (slot === null) break; // user canceled
+
+    // Check if slot is valid and exists
+    if (slot >= 0 && slot < contacts.length) {
+      alert("You selected " + contacts[slot] + ".");
+      document.getElementById("status").innerHTML = "You selected " + contacts[slot] + ".";
+    } else {
+      alert("Name not found.");
+    }
+
+    let again = prompt("Would you like to select another name? (Y/N)");
+
+    if (again.toLowerCase() !== "y") {
+      keepGoing = false;
+    }
+  }
+};
+
+  </script>
+</body>
+</html>
